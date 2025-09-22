@@ -9,7 +9,7 @@ class Codec:
         """
         parts = re.split(r'(/)',longUrl)
         st = "".join(chr(random.randint(48,122)) for _ in range(6))
-        short_url = "".join(parts[:6]) + st
+        short_url = 'https://tin.e/'  + st
         self.mp[short_url] = longUrl
         return short_url
         
