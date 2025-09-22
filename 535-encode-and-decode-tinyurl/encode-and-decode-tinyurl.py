@@ -7,7 +7,6 @@ class Codec:
     def encode(self, longUrl: str) -> str:
         """Encodes a URL to a shortened URL.
         """
-        parts = re.split(r'(/)',longUrl)
         st = "".join(chr(random.randint(48,122)) for _ in range(6))
         short_url = 'https://tin.e/'  + st
         self.mp[short_url] = longUrl
