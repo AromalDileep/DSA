@@ -1,14 +1,19 @@
 class Solution:
     def minScoreTriangulation(self, values: List[int]) -> int:
-        n = len(values)
-        dp = [[0]*n for _ in range(n)]
         
-        for length in range(2, n):  # length of subpolygon
-            for i in range(n-length):
-                j = i + length
-                dp[i][j] = min(
-                    dp[i][k] + dp[k][j] + values[i]*values[k]*values[j]
-                    for k in range(i+1, j)
+        @lru_cache(None)
+        def dp(i, j):
+            # If less than 3 vertices, can't form a triangle
+            if j < i + 2:
+                return 0
+            
+            res = float('inf')
+            # Try every possible middle vertex k
+            for k in range(i+1, j):
+                res = min(
+                    res,
+                    values[i] * values[k] * values[j] + dp(i, k) + dp(k, j)
                 )
-        print(dp)
-        return dp[0][n-1]
+            return res 
+        
+        return dp(0, len(values)-1)
