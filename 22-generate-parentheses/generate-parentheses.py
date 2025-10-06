@@ -1,23 +1,20 @@
 class Solution:
-    def generateParenthesis(self, n: int) -> list[str]:
+    def generateParenthesis(self, n: int) -> List[str]:
         res = []
 
-        def backtrack(path, open_count, close_count):
-            if len(path) == 2 * n:
-                res.append("".join(path))
+        def backtrack(curr, open_count, close_count):
+            # base case: if length == 2 * n, add to result
+            if len(curr) == 2 * n:
+                res.append(curr)
                 return
 
-            # Add '(' if we still have some left
+            # condition 1: we can add '(' if open_count < n
             if open_count < n:
-                path.append("(")               # add '('
-                backtrack(path, open_count + 1, close_count)
-                path.pop()                     # remove '(' after recursion
+                backtrack(curr + "(", open_count + 1, close_count)
 
-            # Add ')' if it won't exceed the number of '('
+            # condition 2: we can add ')' if close_count < open_count
             if close_count < open_count:
-                path.append(")")               # add ')'
-                backtrack(path, open_count, close_count + 1)
-                path.pop()                     # remove ')' after recursion
+                backtrack(curr + ")", open_count, close_count + 1)
 
-        backtrack([], 0, 0)
+        backtrack("", 0, 0)
         return res
