@@ -10,4 +10,5 @@ class Solution:
                 min2 = price
 
         total = min1 + min2
-        return money - total if total <= money else money
+        return money - total if total <= money else money 
+        
