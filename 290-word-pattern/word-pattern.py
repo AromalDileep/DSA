@@ -3,7 +3,7 @@ class Solution:
         hm = {}
         words = s.split()
 
-        # ✅ Important length check
+        #  Important length check
         if len(pattern) != len(words):
             return False
 
