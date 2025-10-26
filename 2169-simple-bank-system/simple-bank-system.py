@@ -3,7 +3,6 @@ class Bank:
     def __init__(self, balance: List[int]):
         self.accounts = {i+1: balance[i] for i in range(len(balance))}
         
-
     def transfer(self, account1: int, account2: int, money: int) -> bool:
         acc1_balance = self.accounts.get(account1)
         acc2_balance = self.accounts.get(account2)
