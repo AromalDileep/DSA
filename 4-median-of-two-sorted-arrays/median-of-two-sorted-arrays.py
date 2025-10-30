@@ -13,3 +13,4 @@ class Solution:
         else:
             median_index = k//2
             return float(nums3[median_index])
+            
