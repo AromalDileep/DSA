@@ -8,3 +8,4 @@ class Solution:
                 res.append(num)
             visited.add(num)
         return res
+        
