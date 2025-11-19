@@ -1,8 +1,8 @@
 class Solution:
     def findFinalValue(self, nums: List[int], original: int) -> int:
-        nums.sort()
+        s = set(nums)
+
+        while original in s:
+            original *= 2 
         
-        for i in range(len(nums)):
-            if nums[i] == original:
-                original *= 2
         return original
