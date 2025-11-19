@@ -4,6 +4,5 @@ class Solution:
         
         for i in range(len(nums)):
             if nums[i] == original:
-                nums[i] *= 2 
                 original *= 2
         return original
