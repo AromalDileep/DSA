@@ -5,6 +5,6 @@ class Solution:
         curr = 0
 
         for b in nums:
-            curr = curr * 2 + b
-            res.append(curr % 5 == 0)
+            curr = (curr * 2 + b) % 5
+            res.append(curr == 0)
         return res
