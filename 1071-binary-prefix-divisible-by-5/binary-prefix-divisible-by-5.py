@@ -1,10 +1,10 @@
 class Solution:
     def prefixesDivBy5(self, nums: List[int]) -> List[bool]:
-        binary = ""
-        res = []
 
-        for n in nums:
-            binary += str(n)
-            val = int(binary, 2)
-            res.append(val % 5 == 0)
+        res = []
+        curr = 0
+
+        for b in nums:
+            curr = curr * 2 + b
+            res.append(curr % 5 == 0)
         return res
