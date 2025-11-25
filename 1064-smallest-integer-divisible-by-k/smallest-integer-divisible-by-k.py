@@ -9,6 +9,6 @@ class Solution:
         while True:
             if ones % k == 0:
                 return count
-            ones = ones * 10 + 1
+            ones = (ones * 10 + 1) % k
             count += 1
 
