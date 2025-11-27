@@ -1,17 +1,22 @@
-
 class Solution:
     def maxSubarraySum(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        prefix = 0
         
-        prefix = [float("inf")] * k
-        prefix[0] = 0 
-        res = float("-inf")
-        total = 0 
-
-        for i, n in enumerate(nums):
-            total += n
-            length = i + 1
-            prefix_index = length % k
-            res = max(res, total-prefix[prefix_index])
-            prefix[prefix_index] = min(prefix[prefix_index], total)
-
-        return res 
+        # For each mod class, track the minimum prefix sum seen so far
+        best = [float('inf')] * k
+        best[0] = 0   # prefix sum at index 0
+        
+        ans = float('-inf')
+        
+        for i, num in enumerate(nums, 1):
+            prefix += num
+            mod = i % k
+            
+            # Candidate subarray ending at i
+            ans = max(ans, prefix - best[mod])
+            
+            # Update smallest prefix sum for this mod group
+            best[mod] = min(best[mod], prefix)
+        
+        return ans
