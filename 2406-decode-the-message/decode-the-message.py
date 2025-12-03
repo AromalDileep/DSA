@@ -1,23 +1,21 @@
 class Solution:
     def decodeMessage(self, key: str, message: str) -> str:
-        u_key = ""
-        seen = set()
-        for i in range(len(key)):
-            if key[i] in seen or key[i] == " ":
-                continue
-            u_key += key[i]
-            seen.add(key[i])
+        mapping = {}
+        cur = 0
+        
+        for ch in key:
+            if ch != " " and ch not in mapping:
+                mapping[ch] = chr(ord('a') + cur)
+                cur += 1
+        print(mapping)
 
-        i_key = {u_key[i] : i+1 for i in range(len(u_key)) } 
-
-        alphas = { i+1 : chr(ord('a') + i) for i in range(26)}
-        res = ""
-
+        res = []
         for ch in message:
             if ch == " ":
-                res += " "
+                res.append(" ")
             else:
-                res += alphas[i_key[ch]] 
-        return res
+                res.append(mapping[ch])
+        
+        return "".join(res)
 
             
