@@ -4,7 +4,7 @@ class Solution:
         pref = [0] * len(nums)
         suf = [0] * len(nums)
 
-        pref[0] = nums[1]
+        pref[0] = nums[0]
         for i in range(len(nums)):
             pref[i] = nums[i] + pref[i-1]
         
