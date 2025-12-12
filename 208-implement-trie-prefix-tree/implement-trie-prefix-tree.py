@@ -15,6 +15,7 @@ class Trie:
                 cur.children[char] = TrieNode()
             cur = cur.children[char]
         cur.endOfWord = True
+    
 
     def search(self, word: str) -> bool:
         cur = self.root
