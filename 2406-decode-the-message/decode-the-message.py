@@ -7,7 +7,6 @@ class Solution:
             if ch != " " and ch not in mapping:
                 mapping[ch] = chr(ord('a') + cur)
                 cur += 1
-        print(mapping)
 
         res = []
         for ch in message:
