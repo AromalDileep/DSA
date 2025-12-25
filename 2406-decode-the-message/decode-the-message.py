@@ -16,5 +16,3 @@ class Solution:
                 res.append(mapping[ch])
         
         return "".join(res)
-
-            
