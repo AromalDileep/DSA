@@ -12,7 +12,6 @@ class Solution:
 
     def is_magic(self, grid, r, c):
         nums = set()
-
         # collect 3x3 numbers
         for i in range(r, r + 3):
             for j in range(c, c + 3):
@@ -23,21 +22,17 @@ class Solution:
 
         if len(nums) != 9:
             return False
-
         # rows
         for i in range(3):
             if sum(grid[r + i][c:c + 3]) != 15:
                 return False
-
         # columns
         for j in range(3):
             if sum(grid[r + i][c + j] for i in range(3)) != 15:
                 return False
-
         # diagonals
         if grid[r][c] + grid[r+1][c+1] + grid[r+2][c+2] != 15:
             return False
         if grid[r][c+2] + grid[r+1][c+1] + grid[r+2][c] != 15:
             return False
-
         return True
