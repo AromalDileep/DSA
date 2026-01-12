@@ -1,9 +1,15 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         
-        seen = {}
-        for i, num in enumerate(numbers):
-            if target - num in seen:
-                return [seen[target-num], i+1]
+        left, right = 0, len(numbers)-1
+
+        while left < right:
+            s = numbers[left] + numbers[right]
+
+            if s == target:
+                return [left+1, right+1]
+            elif s < target:
+                left += 1
             else:
-                seen[num] = i+1
+                right -= 1
+
