@@ -1,7 +1,17 @@
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
-
-        idx = bisect.bisect_right(letters, target)
+        low = 0
+        high = len(letters) - 1
         
-        # Use modulo so that if idx == len(letters), it wraps to 0
-        return letters[idx % len(letters)]
+        if target >= letters[-1]:
+            return letters[0]
+
+        while low <= high:
+            mid = (low + high) // 2
+            if letters[mid] > target:
+                high = mid - 1
+            else:
+                low = mid + 1
+                
+        return letters[low]
+            
