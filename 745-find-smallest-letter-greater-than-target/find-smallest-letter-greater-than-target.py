@@ -6,12 +6,5 @@ class Solution:
         if target >= letters[-1]:
             return letters[0]
 
-        while low <= high:
-            mid = (low + high) // 2
-            if letters[mid] > target:
-                high = mid - 1
-            else:
-                low = mid + 1
-                
-        return letters[low]
+        return letters[bisect.bisect_right(letters, target)]
             
