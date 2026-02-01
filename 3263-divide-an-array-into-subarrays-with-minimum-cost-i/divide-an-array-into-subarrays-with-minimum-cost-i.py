@@ -1,9 +1,13 @@
 class Solution:
     def minimumCost(self, nums: List[int]) -> int:
+        first_min = float('inf')
+        second_min = float('inf')
 
-        cost = nums[0]
-        temp = nums[1:]
-        temp.sort()
+        for x in nums[1:]:
+            if x < first_min:
+                second_min = first_min
+                first_min = x
+            elif x < second_min:
+                second_min = x
 
-        cost += temp[0]+temp[1]
-        return cost
+        return nums[0] + first_min + second_min
