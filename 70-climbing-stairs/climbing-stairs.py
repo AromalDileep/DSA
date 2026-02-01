@@ -1,10 +1,16 @@
 class Solution:
-    def climbStairs(self, n: int) -> int:
-        one, two = 1, 1 
+    def __init__(self):
+        self.memo = {}
 
-        for i in range(n-1): 
-            temp = one 
-            one = one + two
-            two = temp
+    def climbStairs(self, n: int) -> int:
+        if n in self.memo:
+            return self.memo[n]
         
-        return one
+        if n == 1: return 1
+        if n == 2: return 2 
+
+        result = self.climbStairs(n-1) + self.climbStairs(n-2)
+
+        self.memo[n] = result 
+        return result
+        
