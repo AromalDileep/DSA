@@ -10,4 +10,5 @@ class Solution:
             elif x < second_min:
                 second_min = x
 
-        return nums[0] + first_min + second_min
+        return nums[0] + first_min + second_min 
+        
