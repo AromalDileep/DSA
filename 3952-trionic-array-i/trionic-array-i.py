@@ -13,15 +13,17 @@ class Solution:
         if i == 0 or i == n-1:
             return False
 
-        p = i 
+        j = i 
 
-        while i < n-1 and nums[i] > nums[i+1]:
-            i += 1
+        while j < n-1 and nums[j] > nums[j+1]:
+            j += 1
         
-        if i == p or i == n-1:
+        if j == i or j == n-1:
             return False 
         
-        while i < n-1 and nums[i] < nums[i+1]:
-            i += 1
+        k = j
         
-        return i == n-1
+        while k < n-1 and nums[k] < nums[k+1]:
+            k += 1
+        
+        return k == n-1
