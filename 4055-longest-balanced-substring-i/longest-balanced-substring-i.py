@@ -4,22 +4,12 @@ class Solution:
         ans = 0
         
         for i in range(n):
-            freq = [0] * 26
-            distinct = 0
-            maxFreq = 0
-            
+            freq = defaultdict(int)
             for j in range(i, n):
-                idx = ord(s[j]) - ord('a')
-                
-                if freq[idx] == 0:
-                    distinct += 1
-                
-                freq[idx] += 1
-                maxFreq = max(maxFreq, freq[idx])
-                
-                length = j - i + 1
-                
-                if length == distinct * maxFreq:
-                    ans = max(ans, length)
+                freq[s[j]] += 1 
+                equal = all(v1 == v2 for v1 in freq.values() for v2 in freq.values())
+                if equal:
+                    ans = max(ans, j-i+1)
+
         
         return ans
