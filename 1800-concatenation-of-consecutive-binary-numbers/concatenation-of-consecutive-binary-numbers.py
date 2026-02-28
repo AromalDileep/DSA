@@ -4,8 +4,7 @@ class Solution:
         res = 0 
 
         for curr in range(1, n+1):
-            res <<= curr.bit_length()
-            res = (res | curr) % MOD
+            res = ((res << curr.bit_length()) | curr) % MOD
         
         return res
 
