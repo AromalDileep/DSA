@@ -1,8 +1,6 @@
 class Solution:
     def bitwiseComplement(self, n: int) -> int:
+        if n == 0: return 1
         
-        res = ""
-        for num in bin(n)[2:]:
-            res += "1" if num == "0" else "0"
-        
-        return int(res, 2)
+        mask = (1 << n.bit_length()) - 1
+        return n ^ mask
