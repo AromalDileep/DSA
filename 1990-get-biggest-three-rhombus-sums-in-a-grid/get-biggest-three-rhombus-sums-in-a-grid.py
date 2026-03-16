@@ -13,20 +13,14 @@ class Solution:
 
                     total = 0
 
-                    # bottom -> left
                     for i in range(size):
+                        # bottom -> left
                         total += grid[row - i][col - i]
-
-                    # left -> top
-                    for i in range(size):
+                        # left -> top
                         total += grid[row - size - i][col - size + i]
-
-                    # top -> right
-                    for i in range(size):
+                        # top -> right
                         total += grid[row - 2*size + i][col + i]
-
-                    # right -> bottom
-                    for i in range(size):
+                        # right -> bottom
                         total += grid[row - size + i][col + size - i]
 
                     res.add(total)
