@@ -12,15 +12,15 @@ class Solution:
             return False  
         
         curr = 0 
-        for i in range(len(h)):
+        for i in range(len(h)-1): # m-1 or len(h)-1 because no need to cut after last row
             curr += h[i]
-            if curr == total - curr:
+            if curr * 2 == total:
                 return True 
         
         curr = 0
-        for j in range(len(v)):
+        for j in range(len(v)-1):
             curr += v[j]
-            if curr == total -curr:
+            if curr *2 == total:
                 return True 
         
         return False
