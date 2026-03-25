@@ -3,24 +3,24 @@ class Solution:
         
         m, n = len(grid), len(grid[0])
         
-        h = [sum(row) for row in grid]
-        v = [sum(col) for col in zip(*grid)]
-
-        total = sum(h)
+        total = sum((sum(row) for row in grid))
 
         if total % 2 != 0:
-            return False  
+            return False 
         
         curr = 0 
-        for i in range(len(h)-1): # m-1 or len(h)-1 because no need to cut after last row
-            curr += h[i]
+        for i in range(m-1):
+            curr += sum(grid[i])
             if curr * 2 == total:
-                return True 
+                return True
         
         curr = 0
-        for j in range(len(v)-1):
-            curr += v[j]
-            if curr *2 == total:
+        for j in range(n-1):
+            col_sum = 0 
+            for i in range(m):
+                col_sum += grid[i][j]
+            
+            curr +=col_sum
+            if curr * 2 == total:
                 return True 
-        
         return False
