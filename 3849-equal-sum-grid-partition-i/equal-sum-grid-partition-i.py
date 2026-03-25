@@ -16,11 +16,9 @@ class Solution:
         
         curr = 0
         for j in range(n-1):
-            col_sum = 0 
             for i in range(m):
-                col_sum += grid[i][j]
+                curr += grid[i][j]
             
-            curr +=col_sum
             if curr * 2 == total:
                 return True 
         return False
