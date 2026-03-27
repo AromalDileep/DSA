@@ -5,11 +5,9 @@ class Solution:
         k = k % n
 
         for i in range(m):
-            if i % 2 == 0:
-                if mat[i] != mat[i][k:] + mat[i][:k]:
-                    return False
-                
-            else:
-                if mat[i] != mat[i][-k:] + mat[i][:-k]:
-                    return False
+            for j in range(n):
+                if i % 2 == 0:
+                    if mat[i][j] != mat[i][(j + k) % n]: return False
+                else:
+                    if mat[i][j] != mat[i][(j - k) % n]: return False
         return True
