@@ -3,11 +3,15 @@ class Solution:
         
         count = Counter(s)
 
-        s_count = sorted(count.items(), key=lambda x:x[1], reverse=True)
+        buckets = [[] for _ in range(len(s) + 1)]
 
-        res = ""
-
-        for c, freq in s_count:
-            res += c * freq 
+        for char, freq in count.items(): 
+            buckets[freq].append(char)
         
-        return res
+        res = []
+
+        for freq in range(len(s), 0, -1):
+            for char in buckets[freq]:
+                res.append(char * freq)
+        
+        return "".join(res)
