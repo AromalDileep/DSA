@@ -5,14 +5,13 @@ class Solution:
         horizontal = 0 
 
         for direction in moves:
-            match direction:
-                case "D":
+                if direction == "D":
                     vertical -= 1
-                case "U":
+                elif direction == "U":
                     vertical += 1
-                case "L":
+                elif direction == "L":
                     horizontal -= 1
-                case "R":
+                elif direction == "R":
                     horizontal += 1
         
         return vertical == horizontal == 0
