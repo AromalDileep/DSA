@@ -15,4 +15,4 @@ class Solution:
                 case "R":
                     horizontal += 1
         
-        return vertical == horizontal == 0
+        return vertical == 0 and horizontal == 0
