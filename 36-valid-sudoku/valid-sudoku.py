@@ -1,25 +1,22 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         
-        # check rows
+        # check rows and cols
         for i in range(9):
-            seen = set()
+            row_seen = set()
+            col_seen = set()
             for j in range(9):
-                val = board[i][j]
-                if val != ".":
-                    if val in seen:
+                row_val = board[i][j]
+                col_val = board[j][i]
+                if row_val != ".":
+                    if row_val in row_seen:
                         return False
-                    seen.add(val)
+                    row_seen.add(row_val)
+                if col_val != ".":
+                    if col_val in col_seen:
+                        return False
+                    col_seen.add(col_val)
 
-        # check cols
-        for i in range(9):
-            seen = set()
-            for j in range(9):
-                val = board[j][i]
-                if val != ".":
-                    if val in seen:
-                        return False
-                    seen.add(val)
         
         # check boxes
         for row in range(0, 9, 3):
