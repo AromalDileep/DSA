@@ -4,9 +4,14 @@ class Solution:
         running_sum = sum(nums[:k])
         avg = running_sum / k
 
-        for i in range(k, len(nums)):
-            running_sum += nums[i]
-            running_sum -= nums[i-k]
+        l, r = 0, k
+
+        while r < len(nums):
+            running_sum -= nums[l]
+            running_sum += nums[r]
+
+            l += 1
+            r += 1
             avg = max(avg, running_sum/k)
         
         return avg
