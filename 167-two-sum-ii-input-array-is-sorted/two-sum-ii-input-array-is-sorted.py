@@ -1,10 +1,13 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left, right = 0, len(numbers) - 1
         
-        for i in range(len(numbers)):
-            complement = target - numbers[i]
+        while left < right:
+            curr_sum = numbers[left] + numbers[right]
             
-            j = bisect.bisect_left(numbers, complement, i+1)
-            
-            if j < len(numbers) and numbers[j]  == complement:
-                return [i+1, j+1]
+            if curr_sum == target:
+                return [left + 1, right + 1]
+            elif curr_sum < target:
+                left += 1
+            else:
+                right -= 1
