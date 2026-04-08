@@ -7,7 +7,7 @@ class Solution:
         water_trapped = 0
 
         while left < right:
-            if left_max <= right_max:
+            if left_max < right_max:
                 water_trapped += left_max - height[left]
                 left += 1
                 left_max = max(left_max, height[left])
