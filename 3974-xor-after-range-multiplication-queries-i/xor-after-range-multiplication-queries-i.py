@@ -6,11 +6,11 @@ class Solution:
         res = nums[:]
 
         for i in range(len(queries)):
-            idx, r, k, v = queries[i]
+            l, r, k, v = queries[i]
 
-            while idx <= r:
-                res[idx] =(res[idx] * v) % MOD
-                idx += k
+            while l <= r:
+                res[l] =(res[l] * v) % MOD
+                l += k
             
         ans = res[0]
         for i in range(1,len(res)):
