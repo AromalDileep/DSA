@@ -1,20 +1,13 @@
 class Solution:
     def minimumDistance(self, nums: List[int]) -> int:
         
-        counts = Counter(nums)
-        indices = defaultdict(list)
-
-        for i, num in enumerate(nums):
-            if counts[num] >= 3:
-                indices[num].append(i)
-        
-        if not indices:
-            return -1
-
+        n= len(nums)
         res = float("inf")
 
-        for ids in indices.values():
-            for i in range(len(ids) - 2):
-                res = min(res, 2 * (ids[i+2] - ids[i]))
-
-        return res
+        for i in range(n-2):
+            for j in range(i+1, n-1):
+                for k in range(j+1, n):
+                    if nums[i] == nums[j] == nums[k]:
+                        res =  min(res, abs(i-j) + abs(j-k) + abs(k-i))
+       
+        return res if res != float("inf") else -1
