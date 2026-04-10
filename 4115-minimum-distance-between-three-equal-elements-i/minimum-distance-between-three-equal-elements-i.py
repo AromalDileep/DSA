@@ -1,13 +1,13 @@
 class Solution:
     def minimumDistance(self, nums: List[int]) -> int:
         
-        n= len(nums)
+        last = defaultdict(list)
         res = float("inf")
 
-        for i in range(n-2):
-            for j in range(i+1, n-1):
-                for k in range(j+1, n):
-                    if nums[i] == nums[j] == nums[k]:
-                        res =  min(res, abs(i-j) + abs(j-k) + abs(k-i))
-       
-        return res if res != float("inf") else -1
+        for i, num in enumerate(nums):
+            last[num].append(i)
+
+            if len(last[num]) >= 3:
+                res = min(res, 2*(last[num][-1] - last[num][-3]))
+
+        return res if res != float("inf") else -1            
