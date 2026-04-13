@@ -1,8 +1,8 @@
 class Solution:
     def getMinDistance(self, nums: List[int], target: int, start: int) -> int:
         
-        ans = float("inf")
-        for i in range(len(nums)):
-            if nums[i] == target:
-                ans = min(abs(i - start), ans)
-        return ans
+        for d in range(len(nums)):
+            if start - d >= 0 and nums[start - d] == target:
+                return d
+            if start + d < len(nums) and nums[start + d] == target:
+                return d
