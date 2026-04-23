@@ -1,28 +1,25 @@
 class Solution:
     def distance(self, nums: List[int]) -> List[int]:
-        indexes = defaultdict(list)
-        
-        for i, num in enumerate(nums):
-            indexes[num].append(i)
-        
         res = [0] * len(nums)
         
-        def solve(num):
-            arr = indexes[num]
-
-            total = 0 
-            for i in range(1,len(arr)):
-                total += arr[i] - arr[0]
-
-            res[arr[0]] = total
-
-            for i in range(1, len(arr)):
-                idx = arr[i]
-                total += (arr[i] - arr[i-1]) * (i + 1)
-                total -= (arr[i] - arr[i-1]) * (len(arr) - (i-2)-1)
-                res[idx] = total
+        count = defaultdict(int)
+        total = defaultdict(int)
         
-        for num in indexes.keys():
-            solve(num)
+        # LEFT PASS
+        for i, num in enumerate(nums):
+            res[i] += count[num] * i - total[num]
+            count[num] += 1
+            total[num] += i
+        
+        # reset for RIGHT PASS
+        count.clear()
+        total.clear()
+        
+        # RIGHT PASS
+        for i in range(len(nums) - 1, -1, -1):
+            num = nums[i]
+            res[i] += total[num] - count[num] * i
+            count[num] += 1
+            total[num] += i
         
         return res
