@@ -1,7 +1,6 @@
 class Solution:
     def fib(self, n: int) -> int:
-        phi = (1 + 5 ** 0.5 ) / 2
-        psi = (1 - 5 ** 0.5) / 2 
-
-        return round((phi**n - psi**n)//5**0.5)
+        if n < 2:
+            return n
+        return  self.fib(n-1) + self.fib(n-2)
     
