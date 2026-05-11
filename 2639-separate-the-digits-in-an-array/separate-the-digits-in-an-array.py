@@ -1,4 +1,14 @@
 class Solution:
     def separateDigits(self, nums: List[int]) -> List[int]:
         
-        return [int(d) for num in nums for d in str(num)]
+        res = []
+
+        for num in nums:
+            digits = []
+        
+            while num > 0:
+                digits.append(num % 10)
+                num //= 10
+            res.extend(digits[::-1])
+        
+        return res
