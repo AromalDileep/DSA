@@ -11,7 +11,7 @@ class Solution:
         
         print(freq)
 
-        for i in range(1, n-2):
+        for i in range(1, n-1):
             if freq[i] != 1:
                 return False
         
