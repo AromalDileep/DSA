@@ -2,17 +2,17 @@ class Solution:
     def isGood(self, nums: List[int]) -> bool:
         n = len(nums)
 
-        if nums.count(n-1) != 2:
-            return False
-        
-        nums.sort()
+        freq = [0] * n
 
-        count = 1
-        
-        for i in range(n-1):
-            if nums[i] != count:
+        for num in nums:
+            if num >= n:
                 return False
-            count += 1
+            freq[num] += 1 
+        
+        print(freq)
 
-
-        return True
+        for i in range(1, n-2):
+            if freq[i] != 1:
+                return False
+        
+        return freq[n-1] == 2
