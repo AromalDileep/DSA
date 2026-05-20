@@ -2,7 +2,7 @@ class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
 
         n = len(A)
-        freq = [0] * (n+1)
+        freq = defaultdict(int)
 
         common = 0
         res = []
