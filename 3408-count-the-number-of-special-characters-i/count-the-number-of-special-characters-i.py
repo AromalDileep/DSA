@@ -7,11 +7,6 @@ class Solution:
             if ch.islower():
                 lower.add(ch)
             else:
-                upper.add(ch)
-        count =0
-        
-        for ch in lower:
-            if ch.upper() in upper:
-                count += 1
-        
-        return count
+                upper.add(ch.lower())
+
+        return len(lower & upper)
