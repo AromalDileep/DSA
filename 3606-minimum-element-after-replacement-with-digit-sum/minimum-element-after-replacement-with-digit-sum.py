@@ -4,13 +4,12 @@ class Solution:
         smallest = float("inf")
 
         for num in nums:
-            val = num
-            total = 0 
+            digit_sum = 0 
 
-            while val > 0:
-                total += val % 10
-                val //= 10 
+            while num > 0:
+                digit_sum += num % 10
+                num //= 10 
             
-            smallest  = min(smallest, total)
+            smallest  = min(smallest, digit_sum)
         
         return smallest
