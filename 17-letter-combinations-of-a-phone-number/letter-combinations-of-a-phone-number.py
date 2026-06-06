@@ -1,34 +1,29 @@
-from typing import List
-
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
+
         if not digits:
             return []
-        
-        phone_num = {
-            '2': ['a', 'b', 'c'], 
-            '3': ['d', 'e', 'f'],
-            '4': ['g', 'h', 'i'],
-            '5': ['j', 'k', 'l'],
-            '6': ['m', 'n', 'o'],
-            '7': ['p', 'q', 'r', 's'],
-            '8': ['t', 'u', 'v'],
-            '9': ['w', 'x', 'y', 'z']
+
+        phone = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "pqrs",
+            "8": "tuv",
+            "9": "wxyz"
         }
 
         res = []
 
-        def backtrack(index, path):
-            # Base case: if the path is complete
-            if index == len(digits):
-                res.append("".join(path))
+        def backtrack(i, s):
+            if i == len(digits):
+                res.append(s)
                 return
-            
-            # Get letters corresponding to the current digit
-            for ch in phone_num[digits[index]]:
-                path.append(ch)
-                backtrack(index + 1, path)
-                path.pop()  # backtrack step
 
-        backtrack(0, [])
+            for ch in phone[digits[i]]:
+                backtrack(i + 1, s + ch)
+
+        backtrack(0, "")
         return res
