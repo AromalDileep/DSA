@@ -1,9 +1,6 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
 
-        if not digits:
-            return []
-
         phone = {
             "2": "abc",
             "3": "def",
@@ -18,12 +15,13 @@ class Solution:
         res = []
 
         def backtrack(i, s):
-            if i == len(digits):
+            if len(s) == len(digits):
                 res.append(s)
-                return
-
+                return 
+                
+            
             for ch in phone[digits[i]]:
                 backtrack(i + 1, s + ch)
-
+        
         backtrack(0, "")
         return res
