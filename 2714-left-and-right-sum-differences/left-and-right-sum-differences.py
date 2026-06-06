@@ -5,7 +5,6 @@ class Solution:
 
         for i in range(1,n):
             left_sum[i] = nums[i-1] + left_sum[i-1]
-        print(left_sum)
 
         for i in range(n-2, -1,-1):
             right_sum[i] = nums[i+1] + right_sum[i+1]
