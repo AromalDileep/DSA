@@ -3,22 +3,15 @@
  * @return {number}
  */
 var findGCD = function(nums) {
-    smallest = nums[0]
-    largest = nums[0]
+    const smallest = Math.min(...nums)
+    const largest = Math.max(...nums)
 
-    for (num of nums){
-        if (num < smallest){
-            smallest = num
-        }
-        else if (num > largest){
-            largest = num
-        }
-
-    }
-
-    while (largest){
-        [smallest,largest] = [largest, smallest % largest]
-    }
-
-    return smallest
+    return gcd(smallest, largest)
 };
+
+function gcd(a,b){
+    while (b){
+        [a,b] = [b, a%b]
+    }
+    return a
+}
