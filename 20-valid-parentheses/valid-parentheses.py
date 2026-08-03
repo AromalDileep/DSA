@@ -14,8 +14,8 @@ class Solution:
             else:
                 if not stack:
                     return False
-                temp = stack.pop()
-                if temp != close_to_open[br]:
+               
+                if stack.pop() != close_to_open[br]:
                     return False
         
         return len(stack) == 0
