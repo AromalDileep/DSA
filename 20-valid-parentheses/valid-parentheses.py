@@ -10,11 +10,9 @@ class Solution:
 
         for para in s:
             if para in close_to_open:
-                if not stack or stack.pop() != close_to_open[para]:
+                if len(stack) == 0 or stack.pop() != close_to_open[para]:
                     return False
             
             else:
                 stack.append(para)
-        
         return len(stack) == 0
-                
