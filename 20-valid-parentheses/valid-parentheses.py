@@ -3,19 +3,20 @@ class Solution:
         stack = []
 
         close_to_open = {
-            ")": "(",
-            "]": "[",
-            "}": "{"
+            ")":"(",
+            "}":"{",
+            "]":"["
         }
 
-        for br in s:
-            if br not in close_to_open:
-                stack.append(br)
+        for para in s:
+            if para in close_to_open:
+                if len(stack) == 0:
+                    return False
+                if stack.pop() != close_to_open.get(para, 0):
+                    return False
+            
             else:
-                if not stack:
-                    return False
-               
-                if stack.pop() != close_to_open[br]:
-                    return False
+                stack.append(para)
         
         return len(stack) == 0
+                
