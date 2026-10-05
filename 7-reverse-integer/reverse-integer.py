@@ -8,7 +8,7 @@ class Solution:
 
         x = abs(x)
         
-        for i in range(len(str(x))):
+        while x > 0:
             num = x % 10
             x //= 10
             res = (res * 10) + num
