@@ -4,13 +4,13 @@
  */
 var canAliceWin = function(n) {
     let decrement = 10
-    let aliceTurn = 1
+    let aliceTurn = true
 
     while (n >= decrement){
         n -= decrement
         decrement--
-        aliceTurn ^= 1
+        aliceTurn = !aliceTurn
     }
 
-    return aliceTurn ? false : true
+    return !aliceTurn 
 };
